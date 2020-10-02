@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+		  integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>{{ title }}</title>
+</head>
+<main id="main" role="main" class="container">
+
+<body>
+    <h3>Список имеющихся авто</h3>
+<table class="table table-stripped table-hover">
+    <thead class="thead-light">
+        <tr class="table-bordered text-center">
+            <th>Производитель</th>
+            <th>Модель</th>
+            <th>Год выпуска</th>
+            <th>Коробка</th>
+            <th>Цвет</th>
+        </tr>
+    </thead>
+    <tbody class="table-bordered text-center">
+        {% for car in cars %}
+        <tr>
+            <td>{{ car.manufacture }}</td>
+            <td>{{ car.model_auto }}</td>
+            <td>{{ car.year }}</td>
+            <td>{{ car.transmission }}</td>
+            <td>{{ car.color }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% if not message %}
+
+
+<div class="container">
+    <h3>Для поиска авто по параметрам воспользуйтесь формой ниже</h3>
+
+<form action=''>
+  <div class="form-group">
+    <label>Производитель</label>
+    <select name="manufacture" class="custom-select">
+      {% for car in cars %}
+          <option>{{ car.manufacture }}</option>
+      {% endfor %}
+    </select>
+
+      <label>Модель</label>
+        <select name="model_auto" class="custom-select">
+          {% for car in cars %}
+              <option>{{ car.model_auto }}</option>
+          {% endfor %}
+        </select>
+
+      <label>Год выпуска</label>
+        <select name="year" class="custom-select">
+          {% for car in cars %}
+              <option>{{ car.year }}</option>
+          {% endfor %}
+        </select>
+
+      <label>Коробка</label>
+        <select name="transmission" class="custom-select">
+          {% for car in cars %}
+              <option>{{ car.transmission }}</option>
+          {% endfor %}
+        </select>
+
+      <label>Цвет</label>
+        <select name="color" class="custom-select">
+          {% for car in cars %}
+              <option>{{ car.color }}</option>
+          {% endfor %}
+        </select>
+  </div>
+  <button class="btn btn-primary" type="submit">Поиск</button>
+
+
+
+</form>
+
+</div>
+
+    {% else %}
+        <h3>{{ message }}</h3>
+    {% endif %}
+
+</body>
+</main>
+</html>
